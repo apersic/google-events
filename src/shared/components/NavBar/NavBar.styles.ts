@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { fonts } from "../../styles/base/fonts";
 import { responsive } from "../../styles/utils/responsive";
+import { colors } from "../../styles/base/colors";
 
 export const NavBar = styled.div`
   width: 100vw;
@@ -10,6 +11,7 @@ export const NavBar = styled.div`
   justify-content: space-between;
   padding: 0 16px;
   position: relative;
+  border-bottom: ${colors.navBarBorder};
 
   ${responsive.tablet_portrait} {
     padding: 0 12px;
@@ -20,6 +22,8 @@ export const AppName = styled.span`
   display: inline-block;
   font-size: ${fonts.title.fontSize};
   line-height: ${fonts.title.lineHeight};
+  font-weight: ${fonts.fontWeightBold};
+  color: ${colors.primary};
 
   ${responsive.tablet_portrait} {
     font-size: ${fonts.title.fontSizeMobile};
@@ -53,6 +57,7 @@ export const UserOptions = styled.button`
   gap: 16px;
   border: 0;
   cursor: pointer;
+  background: ${colors.transparent};
 `;
 
 export const ProfilePicture = styled.img`

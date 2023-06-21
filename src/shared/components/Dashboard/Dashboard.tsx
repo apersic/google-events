@@ -1,12 +1,14 @@
 import { Outlet } from "react-router";
 import { NavBar } from "../NavBar/NavBar";
-import { MainLayout } from "../../../pages/events/EventsPage.styles";
+import { MainLayout, PageWrapper } from "../../styles/styles";
 
 export const Dashboard = () => {
   return (
     <MainLayout>
       <NavBar />
-      <Outlet />
+      <PageWrapper>
+        <Outlet />
+      </PageWrapper>
     </MainLayout>
   );
 };

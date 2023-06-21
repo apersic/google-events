@@ -4,6 +4,9 @@ import { Button } from "../../shared/components/Button/Button";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { StoreState } from "../../store/types";
+import * as S from "./LoginPage.styles";
+import { PageTitle } from "../../shared/styles/styles";
+import { HOME_PAGE } from "../../routers/routeNames";
 
 export const LoginPage = () => {
   const user = useSelector((state: StoreState) => state.userReducer.user);
@@ -12,14 +15,14 @@ export const LoginPage = () => {
 
   useEffect(() => {
     if (user) {
-      navigate("/");
+      navigate(HOME_PAGE);
     }
   }, [user]);
 
   return (
-    <div>
-      <span>Welcome to Events</span>
+    <S.LoginPage>
+      <PageTitle>Welcome to Events</PageTitle>
       <Button onClick={login} label="Sign in with Google" />
-    </div>
+    </S.LoginPage>
   );
 };

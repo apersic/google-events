@@ -1,12 +1,17 @@
 export const colors = {
-  white: "#f5f5f5",
-  black: "#000",
-  grey: "rgb(229 229 229)",
-  grey2: "#e1e1e1",
+  primary: "#3E08D9",
+
+  white: "white",
+  black: "black",
+
+  transparent: "transparent",
+
   error: "red",
-  sucess: "#5ada56",
+
   popupBackground: "rgba(0, 0, 0, 0.4)",
   loadingComponent: "#2F78CA",
   toastBoxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
-  transparent: "transparent",
+
+  navBarBorder: "2px solid #3E08D9",
+  listItemBorder: "1px solid #3E08D9",
 };

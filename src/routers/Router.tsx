@@ -3,14 +3,15 @@ import { EventsPage } from "../pages/events/EventsPage";
 import { LoginPage } from "../pages/login/LoginPage";
 import { Dashboard } from "../shared/components/Dashboard/Dashboard";
 import { BrowserRouter } from "react-router-dom";
+import { HOME_PAGE, LOGIN_PAGE } from "./routeNames";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Dashboard />}>
-          <Route path="/" element={<EventsPage />} />
-          <Route path="login" element={<LoginPage />} />
+        <Route path={HOME_PAGE} element={<Dashboard />}>
+          <Route path={HOME_PAGE} element={<EventsPage />} />
+          <Route path={LOGIN_PAGE} element={<LoginPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
