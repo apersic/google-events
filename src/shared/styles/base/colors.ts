@@ -8,4 +8,5 @@ export const colors = {
   popupBackground: "rgba(0, 0, 0, 0.4)",
   loadingComponent: "#2F78CA",
   toastBoxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
+  transparent: "transparent",
 };

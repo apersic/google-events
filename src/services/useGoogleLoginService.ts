@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { setAccessToken, setUser } from "../store/reducers/userReducer";
 import useToast from "../shared/hooks/useToast";
 
-export const useGoogleService = () => {
+export const useGoogleLoginService = () => {
   const dispatch = useDispatch();
   const toast = useToast();
 
@@ -21,12 +21,14 @@ export const useGoogleService = () => {
       );
 
       dispatch(setUser(response.data));
-    } catch (err) {
+    } catch (error) {
       toast.show({
         message: "There was an error while fetching your infromation.",
         severity: "error",
         wait: 3000,
       });
+
+      throw error;
     }
   };
 
@@ -40,12 +42,15 @@ export const useGoogleService = () => {
   const login = useGoogleLogin({
     onSuccess: (tokenResponse: Omit<TokenResponse, "error" | "error_description" | "error_uri">) =>
       onLoginSucces(tokenResponse),
-    onError: () =>
+    onError: (error) => {
       toast.show({
         message: "There was an error while trying to log in.",
         severity: "error",
         wait: 3000,
-      }),
+      });
+
+      throw error;
+    },
   });
 
   const logout = () => {

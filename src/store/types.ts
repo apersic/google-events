@@ -1,10 +1,15 @@
 import { User } from "../shared/types";
 
-export interface userReducerState {
+export interface UserReducerState {
   accessToken: string | null;
   user: User | null;
 }
 
+export interface CoreReducerState {
+  isSubmenuOpened: boolean;
+}
+
 export interface StoreState {
-  userReducer: userReducerState;
+  coreReducer: CoreReducerState;
+  userReducer: UserReducerState;
 }

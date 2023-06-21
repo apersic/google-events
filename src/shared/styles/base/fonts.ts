@@ -6,6 +6,11 @@ export const fonts = {
     lineHeight: "16px",
   },
 
+  textSmall: {
+    fontSize: "10px",
+    lineHeight: "14px",
+  },
+
   title: {
     fontSize: "24px",
     fontSizeMobile: "15px",
