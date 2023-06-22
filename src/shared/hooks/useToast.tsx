@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import Toast from "../components/Toast/Toast";
 
 type ShowProps = {
@@ -12,12 +12,13 @@ export interface ToastHookProps {
   show: ({ message, severity, wait }: ShowProps) => void;
 }
 
+const container = document.getElementById("toast");
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const root = createRoot(container!);
+
 export default function useToast(props?: ToastHookProps) {
   const show = ({ message, severity, wait }: ShowProps) => {
-    ReactDOM.render(
-      <Toast {...props} message={message} severity={severity} />,
-      document.getElementById("toast")
-    );
+    root.render(<Toast {...props} message={message} severity={severity} />);
 
     (async () => {
       await unMountToast(wait);
@@ -27,7 +28,7 @@ export default function useToast(props?: ToastHookProps) {
   async function unMountToast(wait?: number | null) {
     await new Promise(() =>
       setTimeout(() => {
-        ReactDOM.unmountComponentAtNode(document.getElementById("toast") as Element);
+        root.unmount();
       }, wait || 0)
     );
   }
@@ -39,12 +40,12 @@ export default function useToast(props?: ToastHookProps) {
   };
 }
 
-export async function showToast(wait: number, message: string) {
-  ReactDOM.render(<Toast message={message} severity="error" />, document.getElementById("toast"));
+export async function showToast(message: string, wait?: number | null) {
+  root.render(<Toast message={message} severity="error" />);
 
   await new Promise(() =>
     setTimeout(() => {
-      ReactDOM.unmountComponentAtNode(document.getElementById("toast") as Element);
-    }, wait)
+      root.unmount();
+    }, wait || 3000)
   );
 }

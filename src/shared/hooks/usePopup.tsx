@@ -1,6 +1,6 @@
 import { ReactNode, useRef } from "react";
-import ReactDOM from "react-dom";
 import { Popup } from "../components/Popup/Popup";
+import { createRoot } from "react-dom/client";
 
 type ShowProps = {
   content: ReactNode;
@@ -10,9 +10,13 @@ export interface PopupHookProps {
   show: ({ content }: ShowProps) => void;
 }
 
+const container = document.getElementById("popup");
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const root = createRoot(container!);
+
 export default function usePopup(props?: PopupHookProps) {
   const show = ({ content }: ShowProps) => {
-    ReactDOM.render(<Popup {...props} content={content} />, document.getElementById("popup"));
+    root.render(<Popup {...props} content={content} />);
   };
 
   const memoShow = useRef(show);
