@@ -50,12 +50,11 @@ export const UserDetails = styled.div`
   gap: 4px;
 `;
 
-export const UserOptions = styled.button`
+export const UserOptions = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
   gap: 16px;
-  border: 0;
   cursor: pointer;
   background: ${colors.transparent};
 `;

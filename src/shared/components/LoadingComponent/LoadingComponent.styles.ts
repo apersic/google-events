@@ -10,7 +10,7 @@ export const LoadingComponent = styled.div`
   height: 100%;
 `;
 
-export const LoadingText = styled.span<{ $color?: string }>`
+export const LoadingText = styled.span`
   display: inline-block;
   margin-top: 18px;
   font-size: ${fonts.primaryButton.fontSize};

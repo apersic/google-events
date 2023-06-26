@@ -38,6 +38,7 @@ export const useGoogleLoginService = () => {
     onError: () => {
       showToast("There was an error while trying to log in.");
     },
+    scope: process.env.REACT_APP_SCOPES,
   });
 
   const logout = () => {

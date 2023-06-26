@@ -4,8 +4,7 @@ import { Button } from "../../shared/components/Button/Button";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { StoreState } from "../../store/types";
-import * as S from "./LoginPage.styles";
-import { PageTitle } from "../../shared/styles/styles";
+import { PageLayout, PageTitle } from "../../shared/styles/styles";
 import { HOME_PAGE } from "../../routers/routeNames";
 
 export const LoginPage = () => {
@@ -20,9 +19,9 @@ export const LoginPage = () => {
   }, [user]);
 
   return (
-    <S.LoginPage>
+    <PageLayout>
       <PageTitle>Welcome to Events</PageTitle>
       <Button onClick={login} label="Sign in with Google" />
-    </S.LoginPage>
+    </PageLayout>
   );
 };

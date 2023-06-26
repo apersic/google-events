@@ -10,11 +10,10 @@ export const Submenu = styled.div`
   top: 0;
 `;
 
-export const SubmenuWrapper = styled.button`
+export const SubmenuWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  border: 0;
   padding: 0;
   background: ${colors.transparent};
 `;
@@ -26,7 +25,7 @@ export const List = styled.div`
   justify-content: center;
   gap: 4px;
   position: absolute;
-  top: 72px;
+  top: 70px;
   right: 0;
   width: 220px;
   border: ${colors.navBarBorder};
@@ -60,7 +59,6 @@ export const MenuItem = styled.button`
   border-bottom: ${colors.listItemBorder};
 
   &:hover {
-    background: ${colors.primary};
-    color: ${colors.white};
+    background: ${colors.highlight};
   }
 `;
