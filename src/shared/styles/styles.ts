@@ -13,11 +13,23 @@ export const PageWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   height: calc(100vh - 72px);
+  position: fixed;
+  left: 0;
+  top: 72px;
+  right: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const PageLayout = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
   gap: 32px;
@@ -26,7 +38,6 @@ export const PageLayout = styled.div`
   ${responsive.tablet_portrait} {
     padding: 0 16px;
     margin-top: 64px;
-    align-items: flex-start;
   }
 `;
 
