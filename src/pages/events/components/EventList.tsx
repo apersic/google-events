@@ -28,6 +28,16 @@ export const EventList = ({ events }: EventListProps) => {
     }
   };
 
+  if (sortedEvents.length < 1) {
+    return (
+      <S.EventList>
+        <S.EventGroup>
+          <S.NoResults>No events</S.NoResults>
+        </S.EventGroup>
+      </S.EventList>
+    );
+  }
+
   return (
     <S.EventList>
       <S.FilterSelect

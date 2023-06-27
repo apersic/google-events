@@ -21,9 +21,6 @@ export const EventComponent = ({ event }: EventComponentProps) => {
           title={`Are you sure you want to delete ${event.summary}?`}
           onCancel={() => unMountPopup()}
           onConfirm={() => deleteEvent(event.id)}
-          key={event.id}
-          type={""}
-          props={undefined}
         />
       ),
     });

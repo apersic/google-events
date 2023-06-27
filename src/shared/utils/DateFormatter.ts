@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
 import { format } from "date-fns";
 
 export const getFormattedDate = (datetime: string) => {

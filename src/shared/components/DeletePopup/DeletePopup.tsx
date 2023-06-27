@@ -1,8 +1,6 @@
-import { JSXElementConstructor, ReactElement } from "react";
 import * as S from "./DeletePopup.styles";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-interface DeletePopupProps extends ReactElement<any, string | JSXElementConstructor<any>> {
+interface DeletePopupProps {
   title: string;
   onCancel: () => void;
   onConfirm: () => void;

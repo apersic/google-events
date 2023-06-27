@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { showToast } from "../shared/hooks/useToast";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../store/types";
@@ -24,8 +23,12 @@ export const useGoogleCalendarService = () => {
       );
 
       dispatch(setEvents(response.data.items));
-    } catch (error: any) {
-      showToast(error.response.data.error.message);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        showToast(error.response?.data.error.message);
+      } else {
+        showToast("There was an error getting your events.");
+      }
     }
   };
 
@@ -44,8 +47,12 @@ export const useGoogleCalendarService = () => {
       showToast("Event deleted.");
       dispatch(setEvents(null));
       getCalendarEvents();
-    } catch (error: any) {
-      showToast(error.response.data.error.message);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        showToast(error.response?.data.error.message);
+      } else {
+        showToast("There was an error while deleting the event.");
+      }
     }
   };
 
@@ -65,8 +72,12 @@ export const useGoogleCalendarService = () => {
       showToast("Event created.");
       dispatch(setEvents(null));
       getCalendarEvents();
-    } catch (error: any) {
-      showToast(error.response.data.error.message);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        showToast(error.response?.data.error.message);
+      } else {
+        showToast("There was an error while creating the event.");
+      }
     }
   };
 

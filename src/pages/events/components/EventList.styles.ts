@@ -42,3 +42,8 @@ export const FilterSelect = styled.select`
   line-height: ${fonts.eventSummary.lineHeight};
   box-shadow: ${colors.cardBoxShadow};
 `;
+
+export const NoResults = styled.span`
+  font-size: ${fonts.eventSummary.fontSize};
+  line-height: ${fonts.eventSummary.lineHeight};
+`;
