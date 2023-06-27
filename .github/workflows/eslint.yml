@@ -39,8 +39,9 @@ jobs:
         run: npx eslint .
           --config .eslintrc.json
           --ext .ts
-          --format prettier \"./{src,public}/**/*.{js,jsx,ts,tsx}\" --write
-        continue-on-error: true
+
+      - name: Run format
+        run: npx prettier \"./{src,public}/**/*.{js,jsx,ts,tsx}\" --write
 
       - name: Checkout code
         uses: actions/checkout@v3
