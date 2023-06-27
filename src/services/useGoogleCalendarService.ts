@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
 import { showToast } from "../shared/hooks/useToast";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,12 +23,33 @@ export const useGoogleCalendarService = () => {
       );
 
       dispatch(setEvents(response.data.items));
-    } catch (error) {
-      showToast("There was an error while fetching your events.");
+    } catch (error: any) {
+      showToast(error.response.data.error.message);
+    }
+  };
+
+  const deleteEvent = async (eventId: string) => {
+    try {
+      await axios.delete(
+        `${process.env.REACT_APP_CALENDAR_BASE_URL}/calendars/${user?.email}/events/${eventId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            Accept: "application/json",
+          },
+        }
+      );
+
+      showToast("Event deleted.");
+      dispatch(setEvents(null));
+      getCalendarEvents();
+    } catch (error: any) {
+      showToast(error.response.data.error.message);
     }
   };
 
   return {
     getCalendarEvents,
+    deleteEvent,
   };
 };

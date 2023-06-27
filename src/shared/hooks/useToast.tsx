@@ -28,7 +28,7 @@ export default function useToast(props?: ToastHookProps) {
   async function unMountToast(wait?: number | null) {
     await new Promise(() =>
       setTimeout(() => {
-        root.unmount();
+        root.render(<></>);
       }, wait || 0)
     );
   }

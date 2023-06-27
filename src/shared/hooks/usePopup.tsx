@@ -1,9 +1,9 @@
-import { ReactNode, useRef } from "react";
+import { ReactElement, useRef } from "react";
 import { Popup } from "../components/Popup/Popup";
 import { createRoot } from "react-dom/client";
 
 type ShowProps = {
-  content: ReactNode;
+  content: ReactElement;
 };
 
 export interface PopupHookProps {
@@ -16,12 +16,18 @@ const root = createRoot(container!);
 
 export default function usePopup(props?: PopupHookProps) {
   const show = ({ content }: ShowProps) => {
-    root.render(<Popup {...props} content={content} />);
+    root.render(<Popup {...props} onClose={() => unMountPopup()} content={content} />);
   };
 
+  function unMountPopup() {
+    root.render(<></>);
+  }
+
   const memoShow = useRef(show);
+  const memoUnMount = useRef(unMountPopup);
 
   return {
     show: memoShow.current,
+    unMountPopup: memoUnMount.current,
   };
 }

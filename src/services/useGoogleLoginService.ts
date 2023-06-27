@@ -20,8 +20,9 @@ export const useGoogleLoginService = () => {
       );
 
       dispatch(setUser(response.data));
-    } catch (error) {
-      showToast("There was an error while fetching your information.");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      showToast(error.response.data.error.message);
     }
   };
 
