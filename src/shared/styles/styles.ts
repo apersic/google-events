@@ -33,7 +33,7 @@ export const PageLayout = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   gap: 32px;
-  margin: 80px 0 72px;
+  margin: 80px 0 0;
   position: relative;
   width: 100%;
   height: 100%;

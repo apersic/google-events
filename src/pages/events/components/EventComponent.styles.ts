@@ -16,6 +16,10 @@ export const EventComponent = styled.div`
   box-shadow: ${colors.cardBoxShadow};
   background: ${colors.white};
 
+  &:last-child {
+    margin-bottom: 42px;
+  }
+
   ${responsive.tablet_portrait} {
     width: 100%;
   }
