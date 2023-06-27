@@ -36,6 +36,11 @@ export const DateTime = styled.div`
   justify-content: space-between;
   gap: 8px;
   width: 100%;
+
+  ${responsive.phone} {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 export const EventDates = styled.div`
@@ -100,5 +105,6 @@ export const EventDetails = styled.div`
   ${responsive.phone} {
     width: 100%;
     justify-content: space-between;
+    align-items: flex-end;
   }
 `;

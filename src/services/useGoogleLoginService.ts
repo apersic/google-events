@@ -3,6 +3,7 @@ import axios, { AxiosError } from "axios";
 import { useDispatch } from "react-redux";
 import { setAccessToken, setUser } from "../store/reducers/userReducer";
 import { showToast } from "../shared/hooks/useToast";
+import i18next from "i18next";
 
 export const useGoogleLoginService = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ export const useGoogleLoginService = () => {
       if (error instanceof AxiosError) {
         showToast(error.response?.data.error.message);
       } else {
-        showToast("There was an error getting your information.");
+        showToast(i18next.t("getUserErrorText"));
       }
     }
   };
@@ -40,7 +41,7 @@ export const useGoogleLoginService = () => {
     onSuccess: (tokenResponse: Omit<TokenResponse, "error" | "error_description" | "error_uri">) =>
       onLoginSucces(tokenResponse),
     onError: () => {
-      showToast("There was an error while trying to log in.");
+      showToast(i18next.t("loginErrorText"));
     },
     scope: process.env.REACT_APP_SCOPES,
   });

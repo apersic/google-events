@@ -5,6 +5,8 @@ import { setDaysLimit, setGroupBy } from "../../../store/reducers/eventReducer";
 import { sortEvents } from "../../../shared/utils/EventSorter";
 import { EventComponent } from "./EventComponent";
 import * as S from "./EventList.styles";
+import { getLanguage } from "../../../shared/localisation/i18n-utils";
+import { useTranslation } from "react-i18next";
 
 interface EventListProps {
   events: Event[];
@@ -14,8 +16,10 @@ export const EventList = ({ events }: EventListProps) => {
   const groupBy = useSelector((state: StoreState) => state.eventReducer.groupBy);
   const daysLimit = useSelector((state: StoreState) => state.eventReducer.daysLimit);
   const dispatch = useDispatch();
+  const language = getLanguage();
+  const { t } = useTranslation();
 
-  const sortedEvents: EventGroup[] = sortEvents(events, groupBy, daysLimit);
+  const sortedEvents: EventGroup[] = sortEvents(events, groupBy, daysLimit, language);
 
   const handleOnDaysLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newLimit = parseInt(event.target.value, 10);
@@ -32,7 +36,7 @@ export const EventList = ({ events }: EventListProps) => {
     return (
       <S.EventList>
         <S.EventGroup>
-          <S.NoResults>No events</S.NoResults>
+          <S.NoResults>{t("noEvents")}</S.NoResults>
         </S.EventGroup>
       </S.EventList>
     );
@@ -42,12 +46,12 @@ export const EventList = ({ events }: EventListProps) => {
     <S.EventList>
       <S.FilterSelect
         value={daysLimit.toString()}
-        placeholder="Days limit"
+        placeholder={t("daysLimitPlaceholder")}
         onChange={handleOnDaysLimitChange}
       >
-        <option value={1}>Next day</option>
-        <option value={7}>Next seven days</option>
-        <option value={30}>Next thirty days</option>
+        <option value={1}>{t("nextDay")}</option>
+        <option value={7}>{t("nextSevenDays")}</option>
+        <option value={30}>{t("nextThirtyDays")}</option>
       </S.FilterSelect>
       {sortedEvents.map((group) => (
         <S.EventGroup key={group.group}>

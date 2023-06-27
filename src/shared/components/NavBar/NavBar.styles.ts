@@ -54,6 +54,10 @@ export const UserDetails = styled.div`
   align-items: flex-end;
   justify-content: center;
   gap: 4px;
+
+  ${responsive.phone_small} {
+    display: none;
+  }
 `;
 
 export const UserOptions = styled.div`
@@ -68,4 +72,11 @@ export const UserOptions = styled.div`
 export const ProfilePicture = styled.img`
   width: 36px;
   height: 36px;
+`;
+
+export const Settings = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
 `;

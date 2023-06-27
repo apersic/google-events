@@ -6,11 +6,13 @@ import { useSelector } from "react-redux";
 import { StoreState } from "../../store/types";
 import { PageLayout, PageTitle } from "../../shared/styles/styles";
 import { HOME_PAGE } from "../../routers/routeNames";
+import { useTranslation } from "react-i18next";
 
 export const LoginPage = () => {
   const user = useSelector((state: StoreState) => state.userReducer.user);
   const { login } = useGoogleLoginService();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (user) {
@@ -20,8 +22,8 @@ export const LoginPage = () => {
 
   return (
     <PageLayout>
-      <PageTitle>Welcome to Events</PageTitle>
-      <Button onClick={login} label="Sign in with Google" />
+      <PageTitle>{t("welcomeToEvents")}</PageTitle>
+      <Button onClick={login} label={t("signInWithGoogle")} />
     </PageLayout>
   );
 };

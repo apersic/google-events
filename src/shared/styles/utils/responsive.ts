@@ -1,4 +1,6 @@
 export const breakpoints = {
+  // 27em => 27 * 16px = 432px
+  phone_small: "27em",
   // 36em => 36 * 16px = 576px
   phone: "36em",
   // 48em => 48 * 16px = 768px
