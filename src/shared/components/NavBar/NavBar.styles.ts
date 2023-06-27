@@ -69,3 +69,10 @@ export const ProfilePicture = styled.img`
   width: 36px;
   height: 36px;
 `;
+
+export const Settings = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+`;

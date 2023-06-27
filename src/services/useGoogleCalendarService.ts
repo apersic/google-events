@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../store/types";
 import { setEvents } from "../store/reducers/eventReducer";
 import { FieldValues } from "react-hook-form";
+import i18next from "i18next";
 
 export const useGoogleCalendarService = () => {
   const accessToken = useSelector((state: StoreState) => state.userReducer.accessToken);
@@ -27,7 +28,7 @@ export const useGoogleCalendarService = () => {
       if (error instanceof AxiosError) {
         showToast(error.response?.data.error.message);
       } else {
-        showToast("There was an error getting your events.");
+        showToast(i18next.t("getErrorText"));
       }
     }
   };
@@ -44,14 +45,14 @@ export const useGoogleCalendarService = () => {
         }
       );
 
-      showToast("Event deleted.");
+      showToast(i18next.t("eventDeleted"));
       dispatch(setEvents(null));
       getCalendarEvents();
     } catch (error) {
       if (error instanceof AxiosError) {
         showToast(error.response?.data.error.message);
       } else {
-        showToast("There was an error while deleting the event.");
+        showToast(i18next.t("deleteErrorText"));
       }
     }
   };
@@ -69,14 +70,14 @@ export const useGoogleCalendarService = () => {
         }
       );
 
-      showToast("Event created.");
+      showToast(i18next.t("eventCreated"));
       dispatch(setEvents(null));
       getCalendarEvents();
     } catch (error) {
       if (error instanceof AxiosError) {
         showToast(error.response?.data.error.message);
       } else {
-        showToast("There was an error while creating the event.");
+        showToast(i18next.t("createEventErrorText"));
       }
     }
   };

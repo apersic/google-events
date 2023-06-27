@@ -5,6 +5,11 @@ export enum GroupByTypes {
   WEEK = "week",
 }
 
+export enum AvailableLanguages {
+  EN = "en",
+  HR = "hr",
+}
+
 export interface UserReducerState {
   accessToken: string | null;
   user: User | null;

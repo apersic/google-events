@@ -10,6 +10,7 @@ import { EventList } from "./components/EventList";
 import { FloatingButton } from "../../shared/components/FloatingButton/FloatingButton";
 import usePopup from "../../shared/hooks/usePopup";
 import { AddEventPopup } from "./components/AddEventPopup";
+import { useTranslation } from "react-i18next";
 
 export const EventsPage = () => {
   const user = useSelector((state: StoreState) => state.userReducer.user);
@@ -17,6 +18,7 @@ export const EventsPage = () => {
   const { getCalendarEvents, addEvent } = useGoogleCalendarService();
   const events = useSelector((state: StoreState) => state.eventReducer.events);
   const { show, unMountPopup } = usePopup();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!user) {
@@ -35,7 +37,7 @@ export const EventsPage = () => {
   if (events) {
     return (
       <PageLayout>
-        <PageTitle>Your events</PageTitle>
+        <PageTitle>{t("yourEvents")}</PageTitle>
         <EventList events={events} />
         <FloatingButton label="+" onClick={handleOnAddEventClick} />
       </PageLayout>
@@ -44,7 +46,7 @@ export const EventsPage = () => {
 
   return (
     <PageLayout>
-      <LoadingComponent text="Loading" />
+      <LoadingComponent text={t("loading")} />
     </PageLayout>
   );
 };

@@ -15,9 +15,15 @@ export const coreReducer = createSlice({
         isSubmenuOpened: action.payload,
       };
     },
+    setLanguage: (state, action) => {
+      return {
+        ...state,
+        language: action.payload,
+      };
+    },
   },
 });
 
-export const { setIsSubmenuOpened } = coreReducer.actions;
+export const { setIsSubmenuOpened, setLanguage } = coreReducer.actions;
 
 export default coreReducer.reducer;

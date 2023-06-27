@@ -12,18 +12,23 @@ import {
 import { GroupByTypes } from "../../store/types";
 import { Event } from "../types";
 import { getWeekNumberSufix } from "./DateFormatter";
+import i18next from "i18next";
 
-const getWeekLabel = (week: number, year: number) => {
-  return `${week}${getWeekNumberSufix(week)} week of ${year}`;
+const getWeekLabel = (week: number, year: number, language: string) => {
+  return i18next.t("weekLabel", {
+    week: week,
+    sufix: getWeekNumberSufix(week, language),
+    year: year,
+  });
 };
 
-const getGroupsByWeek = (events: Event[]) => {
+const getGroupsByWeek = (events: Event[], language: string) => {
   const groups: string[] = [];
 
   events.forEach((event) => {
     const week = getISOWeek(new Date(event.start.dateTime));
 
-    const weekLabel = getWeekLabel(week, getYear(new Date(event.start.dateTime)));
+    const weekLabel = getWeekLabel(week, getYear(new Date(event.start.dateTime)), language);
     if (!groups.includes(weekLabel)) {
       groups.push(weekLabel);
     }
@@ -45,16 +50,17 @@ const getGroupsByDay = (events: Event[]) => {
   return groups;
 };
 
-const groupEventsByWeek = (events: Event[]) => {
+const groupEventsByWeek = (events: Event[], language: string) => {
   const groupedList: { group: string; events: Event[] }[] = [];
-  const groups = getGroupsByWeek(events);
+  const groups = getGroupsByWeek(events, language);
 
   groups.forEach((group) => {
     const groupEvents = events.filter(
       (event: Event) =>
         getWeekLabel(
           getISOWeek(new Date(event.start.dateTime)),
-          getYear(new Date(event.start.dateTime))
+          getYear(new Date(event.start.dateTime)),
+          language
         ) === group
     );
 
@@ -113,13 +119,18 @@ const getEventsUpToLimit = (events: Event[], daysLimit: number) => {
   return newList;
 };
 
-export const sortEvents = (events: Event[], groupBy: GroupByTypes, daysLimit: number) => {
+export const sortEvents = (
+  events: Event[],
+  groupBy: GroupByTypes,
+  daysLimit: number,
+  language: string
+) => {
   const filteredList: Event[] = getEventsUpToLimit(events, daysLimit);
   let groupedList;
 
   switch (groupBy) {
     case GroupByTypes.WEEK:
-      groupedList = groupEventsByWeek(filteredList.sort(sortByStartDate));
+      groupedList = groupEventsByWeek(filteredList.sort(sortByStartDate), language);
       break;
     case GroupByTypes.DAY:
     default:

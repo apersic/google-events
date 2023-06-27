@@ -6,6 +6,7 @@ import {
   CancelButton,
 } from "../../../shared/components/DeletePopup/DeletePopup.styles";
 import { format } from "date-fns";
+import { useTranslation } from "react-i18next";
 
 interface AddEventPopupProps {
   onCancel: () => void;
@@ -19,6 +20,7 @@ export const AddEventPopup = ({ onCancel, onSave }: AddEventPopupProps) => {
     formState: { errors },
     reset,
   } = useForm();
+  const { t } = useTranslation();
 
   const onSubmit = (data: FieldValues) => {
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -44,30 +46,30 @@ export const AddEventPopup = ({ onCancel, onSave }: AddEventPopupProps) => {
 
   return (
     <S.AddEventPopup>
-      <S.Title>Add event</S.Title>
+      <S.Title>{t("addEvent")}</S.Title>
       <S.AddEventForm onSubmit={handleSubmit(onSubmit)}>
         <Input
           isError={errors.summary ? true : false}
-          placeholder="Summary*"
+          placeholder={t("summaryPlaceholder")}
           {...register("summary", { required: true, maxLength: 20 })}
         />
         <Input
           isError={errors.start ? true : false}
-          placeholder="Start*"
+          placeholder={t("startPlaceholder")}
           type="datetime-local"
           {...register("start", { required: true })}
         />
         <Input
           isError={errors.end ? true : false}
-          placeholder="End*"
+          placeholder={t("endPlaceholder")}
           type="datetime-local"
           {...register("end", { required: true })}
         />
 
-        <S.ErrorText isError={isError()}>Please correct invalid fields</S.ErrorText>
+        <S.ErrorText isError={isError()}>{t("errorText")}</S.ErrorText>
 
         <ButtonGroup>
-          <CancelButton onClick={onCancel}>Cancel</CancelButton>
+          <CancelButton onClick={onCancel}>{t("cancel")}</CancelButton>
           <S.SubmitButton type="submit" />
         </ButtonGroup>
       </S.AddEventForm>

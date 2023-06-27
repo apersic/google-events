@@ -5,6 +5,7 @@ import { ReactComponent as DeleteIcon } from "../../../shared/assets/icons/delet
 import { useGoogleCalendarService } from "../../../services/useGoogleCalendarService";
 import usePopup from "../../../shared/hooks/usePopup";
 import { DeletePopup } from "../../../shared/components/DeletePopup/DeletePopup";
+import { useTranslation } from "react-i18next";
 
 interface EventComponentProps {
   event: Event;
@@ -13,12 +14,13 @@ interface EventComponentProps {
 export const EventComponent = ({ event }: EventComponentProps) => {
   const { deleteEvent } = useGoogleCalendarService();
   const { show, unMountPopup } = usePopup();
+  const { t } = useTranslation();
 
   const handleOnDeleteClick = (event: Event) => {
     show({
       content: (
         <DeletePopup
-          title={`Are you sure you want to delete ${event.summary}?`}
+          title={t("deletePopupTitle", { summary: event.summary })}
           onCancel={() => unMountPopup()}
           onConfirm={() => deleteEvent(event.id)}
         />
@@ -32,12 +34,20 @@ export const EventComponent = ({ event }: EventComponentProps) => {
       <S.EventDetails>
         <S.EventDates>
           <S.DateTime>
-            <S.DateText>Start date: {getFormattedDate(event.start.dateTime)}</S.DateText>
-            <S.DateText>Start time: {getFormattedTime(event.start.dateTime)}</S.DateText>
+            <S.DateText>
+              {t("startDate", { startDate: getFormattedDate(event.start.dateTime) })}
+            </S.DateText>
+            <S.DateText>
+              {t("startTime", { startTime: getFormattedTime(event.start.dateTime) })}
+            </S.DateText>
           </S.DateTime>
           <S.DateTime>
-            <S.DateText>End date: {getFormattedDate(event.end.dateTime)}</S.DateText>
-            <S.DateText>End time: {getFormattedTime(event.end.dateTime)}</S.DateText>
+            <S.DateText>
+              {t("endDate", { endDate: getFormattedDate(event.end.dateTime) })}
+            </S.DateText>
+            <S.DateText>
+              {t("endTime", { endTime: getFormattedTime(event.end.dateTime) })}
+            </S.DateText>
           </S.DateTime>
         </S.EventDates>
 
