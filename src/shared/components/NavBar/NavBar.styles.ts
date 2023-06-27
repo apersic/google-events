@@ -54,6 +54,10 @@ export const UserDetails = styled.div`
   align-items: flex-end;
   justify-content: center;
   gap: 4px;
+
+  ${responsive.phone_small} {
+    display: none;
+  }
 `;
 
 export const UserOptions = styled.div`
