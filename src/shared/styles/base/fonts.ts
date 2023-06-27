@@ -17,6 +17,11 @@ export const fonts = {
     lineHeight: "32px",
   },
 
+  eventSummary: {
+    fontSize: "18px",
+    lineHeight: "26px",
+  },
+
   primaryButton: {
     fontSize: "14px",
     lineHeight: "14px",

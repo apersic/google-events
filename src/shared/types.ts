@@ -19,3 +19,8 @@ export interface Event {
   end: DateTime;
   start: DateTime;
 }
+
+export interface EventGroup {
+  group: string | number;
+  events: Event[];
+}

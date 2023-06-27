@@ -6,7 +6,7 @@ import { PageLayout, PageTitle } from "../../shared/styles/styles";
 import { LOGIN_PAGE } from "../../routers/routeNames";
 import { useGoogleCalendarService } from "../../services/useGoogleCalendarService";
 import LoadingComponent from "../../shared/components/LoadingComponent/LoadingComponent";
-import { EventComponent } from "./components/EventComponent";
+import { EventList } from "./components/EventList";
 
 export const EventsPage = () => {
   const user = useSelector((state: StoreState) => state.userReducer.user);
@@ -26,9 +26,7 @@ export const EventsPage = () => {
     return (
       <PageLayout>
         <PageTitle>Your events</PageTitle>
-        {events.map((event) => (
-          <EventComponent key={event.id} event={event} />
-        ))}
+        <EventList events={events} />
       </PageLayout>
     );
   }

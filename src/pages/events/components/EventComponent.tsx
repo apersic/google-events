@@ -10,7 +10,7 @@ interface EventComponentProps {
 export const EventComponent = ({ event }: EventComponentProps) => {
   return (
     <S.EventComponent>
-      <span>{event.summary}</span>
+      <S.EventSummary>{event.summary}</S.EventSummary>
       <S.EventDetails>
         <S.EventDates>
           <S.DateTime>

@@ -1,5 +1,10 @@
 import { Event, User } from "../shared/types";
 
+export enum GroupByTypes {
+  DAY = "day",
+  WEEK = "week",
+}
+
 export interface UserReducerState {
   accessToken: string | null;
   user: User | null;
@@ -11,6 +16,8 @@ export interface CoreReducerState {
 
 export interface EventReducerState {
   events: Event[] | null;
+  groupBy: GroupByTypes;
+  daysLimit: number;
 }
 
 export interface StoreState {

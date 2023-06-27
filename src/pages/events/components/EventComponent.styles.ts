@@ -14,6 +14,7 @@ export const EventComponent = styled.div`
   padding: 12px 16px;
   gap: 12px;
   box-shadow: ${colors.cardBoxShadow};
+  background: ${colors.white};
 
   ${responsive.tablet_portrait} {
     width: 100%;
@@ -45,9 +46,9 @@ export const EventDates = styled.div`
   }
 `;
 
-export const EventSummarz = styled.h1`
-  font-size: ${fonts.title.fontSize};
-  line-height: ${fonts.title.lineHeight};
+export const EventSummary = styled.span`
+  font-size: ${fonts.eventSummary.fontSize};
+  line-height: ${fonts.eventSummary.lineHeight};
   text-align: left;
 `;
 
