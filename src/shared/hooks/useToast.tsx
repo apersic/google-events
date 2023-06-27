@@ -4,12 +4,11 @@ import Toast from "../components/Toast/Toast";
 
 type ShowProps = {
   message: string;
-  severity: "info" | "error" | undefined;
   wait: number;
 };
 
 export interface ToastHookProps {
-  show: ({ message, severity, wait }: ShowProps) => void;
+  show: ({ message, wait }: ShowProps) => void;
 }
 
 const container = document.getElementById("toast");
@@ -17,8 +16,8 @@ const container = document.getElementById("toast");
 const root = createRoot(container!);
 
 export default function useToast(props?: ToastHookProps) {
-  const show = ({ message, severity, wait }: ShowProps) => {
-    root.render(<Toast {...props} message={message} severity={severity} />);
+  const show = ({ message, wait }: ShowProps) => {
+    root.render(<Toast {...props} message={message} />);
 
     (async () => {
       await unMountToast(wait);
@@ -41,7 +40,7 @@ export default function useToast(props?: ToastHookProps) {
 }
 
 export async function showToast(message: string, wait?: number | null) {
-  root.render(<Toast message={message} severity="error" />);
+  root.render(<Toast message={message} />);
 
   await new Promise(() =>
     setTimeout(() => {

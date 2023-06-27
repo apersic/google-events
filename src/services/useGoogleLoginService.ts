@@ -1,5 +1,5 @@
 import { TokenResponse, googleLogout, useGoogleLogin } from "@react-oauth/google";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useDispatch } from "react-redux";
 import { setAccessToken, setUser } from "../store/reducers/userReducer";
 import { showToast } from "../shared/hooks/useToast";
@@ -20,9 +20,12 @@ export const useGoogleLoginService = () => {
       );
 
       dispatch(setUser(response.data));
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      showToast(error.response.data.error.message);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        showToast(error.response?.data.error.message);
+      } else {
+        showToast("There was an error getting your information.");
+      }
     }
   };
 
