@@ -4,7 +4,6 @@ import { responsive } from "../../styles/utils/responsive";
 import { colors } from "../../styles/base/colors";
 
 export const NavBar = styled.div`
-  width: 100vw;
   height: 72px;
   display: flex;
   align-items: center;
@@ -12,6 +11,13 @@ export const NavBar = styled.div`
   padding: 0 16px;
   position: relative;
   border-bottom: ${colors.navBarBorder};
+  box-shadow: ${colors.navBarBoxShadow};
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  background: ${colors.white};
+  z-index: 2;
 
   ${responsive.tablet_portrait} {
     padding: 0 12px;
@@ -50,12 +56,11 @@ export const UserDetails = styled.div`
   gap: 4px;
 `;
 
-export const UserOptions = styled.button`
+export const UserOptions = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
   gap: 16px;
-  border: 0;
   cursor: pointer;
   background: ${colors.transparent};
 `;

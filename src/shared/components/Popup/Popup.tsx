@@ -1,8 +1,9 @@
-import { ReactNode } from "react";
+import { ReactElement } from "react";
 import * as S from "./Popup.styles";
 
 interface PopupProps {
-  content: ReactNode;
+  content: ReactElement;
+  onClose: () => void;
 }
 
 export const Popup = ({ content }: PopupProps) => {

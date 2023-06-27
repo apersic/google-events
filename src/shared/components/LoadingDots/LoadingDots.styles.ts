@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
+import { colors } from "../../styles/base/colors";
 
 const LoadingAnimation = keyframes`
   0% { opacity: 0 }
@@ -6,14 +7,18 @@ const LoadingAnimation = keyframes`
   100% { opacity: 0 }
 `;
 
-export const LoadingDots = styled.div<{ $isFixed?: boolean }>`
+interface LoadingDotsProps {
+  isFixed?: boolean;
+}
+
+export const LoadingDots = styled.div<LoadingDotsProps>`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
 
   ${(props) =>
-    props.$isFixed &&
+    props.isFixed &&
     css`
       position: absolute;
       bottom: 76px;
@@ -26,13 +31,17 @@ export const Dot = styled.div`
   position: relative;
 `;
 
-export const OuterDot = styled.div<{ $color: string; $delay?: number }>`
+interface OuterDotProps {
+  delay?: number;
+}
+
+export const OuterDot = styled.div<OuterDotProps>`
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: transparent;
   border: 1px solid;
-  border-color: ${(props) => (props.$color ? props.$color : "#2F78CA")};
+  border-color: ${colors.loadingComponent};
   position: absolute;
   left: 0;
   top: 0;
@@ -40,9 +49,9 @@ export const OuterDot = styled.div<{ $color: string; $delay?: number }>`
   opacity: 0;
 
   ${(props) => {
-    if (props.$delay) {
+    if (props.delay) {
       return css`
-        animation-delay: ${props.$delay}s;
+        animation-delay: ${props.delay}s;
       `;
     }
 
@@ -52,10 +61,10 @@ export const OuterDot = styled.div<{ $color: string; $delay?: number }>`
   }};
 `;
 
-export const InnerDot = styled.div<{ $color?: string }>`
+export const InnerDot = styled.div`
   width: 4px;
   height: 4px;
-  background: ${(props) => (props.$color ? props.$color : "#2F78CA")};
+  background: ${colors.loadingComponent};
   border-radius: 50%;
   position: absolute;
   top: 25%;

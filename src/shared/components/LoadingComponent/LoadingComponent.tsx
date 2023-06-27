@@ -8,8 +8,8 @@ export interface LoadingComponentProps {
 const LoadingComponent = ({ text }: LoadingComponentProps) => {
   return (
     <S.LoadingComponent>
-      <LoadingDots color="black" />
-      <S.LoadingText $color="black">{text}</S.LoadingText>
+      <LoadingDots />
+      <S.LoadingText>{text}</S.LoadingText>
     </S.LoadingComponent>
   );
 };

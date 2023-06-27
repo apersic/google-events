@@ -1,11 +1,17 @@
 import styled from "styled-components";
 import { colors } from "../../styles/base/colors";
 
-export const Input = styled.input`
-  width: 100%;
+interface InputProps {
+  isError?: boolean;
+}
+
+export const Input = styled.input<InputProps>`
   height: 32px;
-  border: 0;
-  background: transparent;
+  border: ${colors.listItemBorder};
+  background: ${colors.white};
+  color: ${colors.black};
+  border-radius: 4px;
+  padding: 0 16px;
 
   &::placeholder {
     color: ${colors.black};
@@ -15,4 +21,10 @@ export const Input = styled.input`
   &:active {
     outline: none;
   }
+
+  ${(props) =>
+    props.isError &&
+    `
+    border: ${colors.inputErrorBorder}
+  `}
 `;

@@ -2,11 +2,10 @@ import { TokenResponse, googleLogout, useGoogleLogin } from "@react-oauth/google
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setAccessToken, setUser } from "../store/reducers/userReducer";
-import useToast from "../shared/hooks/useToast";
+import { showToast } from "../shared/hooks/useToast";
 
 export const useGoogleLoginService = () => {
   const dispatch = useDispatch();
-  const toast = useToast();
 
   const getUser = async (accessToken: string) => {
     try {
@@ -21,14 +20,9 @@ export const useGoogleLoginService = () => {
       );
 
       dispatch(setUser(response.data));
-    } catch (error) {
-      toast.show({
-        message: "There was an error while fetching your infromation.",
-        severity: "error",
-        wait: 3000,
-      });
-
-      throw error;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      showToast(error.response.data.error.message);
     }
   };
 
@@ -42,15 +36,10 @@ export const useGoogleLoginService = () => {
   const login = useGoogleLogin({
     onSuccess: (tokenResponse: Omit<TokenResponse, "error" | "error_description" | "error_uri">) =>
       onLoginSucces(tokenResponse),
-    onError: (error) => {
-      toast.show({
-        message: "There was an error while trying to log in.",
-        severity: "error",
-        wait: 3000,
-      });
-
-      throw error;
+    onError: () => {
+      showToast("There was an error while trying to log in.");
     },
+    scope: process.env.REACT_APP_SCOPES,
   });
 
   const logout = () => {
