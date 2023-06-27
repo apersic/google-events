@@ -21,6 +21,7 @@ export const FloatingButton = styled.button`
   width: 48px;
   height: 48px;
   cursor: pointer;
+  box-shadow: ${colors.cardBoxShadow};
 
   ${responsive.tablet_portrait} {
     right: 24px;

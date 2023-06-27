@@ -66,8 +66,8 @@ export const DeleteButton = styled.button`
   flex-shrink: 0;
   border: 0;
   background: transparent;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   padding: 0;
   cursor: pointer;
 

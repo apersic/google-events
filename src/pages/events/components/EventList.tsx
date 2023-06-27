@@ -30,7 +30,7 @@ export const EventList = ({ events }: EventListProps) => {
 
   return (
     <S.EventList>
-      <select
+      <S.FilterSelect
         value={daysLimit.toString()}
         placeholder="Days limit"
         onChange={handleOnDaysLimitChange}
@@ -38,7 +38,7 @@ export const EventList = ({ events }: EventListProps) => {
         <option value={1}>Next day</option>
         <option value={7}>Next seven days</option>
         <option value={30}>Next thirty days</option>
-      </select>
+      </S.FilterSelect>
       {sortedEvents.map((group) => (
         <S.EventGroup key={group.group}>
           <S.GroupName>{group.group}</S.GroupName>

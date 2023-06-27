@@ -6,19 +6,27 @@ import {
   addSeconds,
   format,
   getISOWeek,
+  getYear,
   startOfDay,
   startOfToday,
 } from "date-fns";
 import { GroupByTypes } from "../../store/types";
 import { Event } from "../types";
+import { getWeekNumberSufix } from "./DateFormatter";
+
+const getWeekLabel = (week: number, year: number) => {
+  return `${week}${getWeekNumberSufix(week)} week of ${year}`;
+};
 
 const getGroupsByWeek = (events: Event[]) => {
-  const groups: number[] = [];
+  const groups: string[] = [];
 
   events.forEach((event) => {
     const week = getISOWeek(new Date(event.start.dateTime));
-    if (!groups.includes(week)) {
-      groups.push(week);
+
+    const weekLabel = getWeekLabel(week, getYear(new Date(event.start.dateTime)));
+    if (!groups.includes(weekLabel)) {
+      groups.push(weekLabel);
     }
   });
 
@@ -39,12 +47,16 @@ const getGroupsByDay = (events: Event[]) => {
 };
 
 const groupEventsByWeek = (events: Event[]) => {
-  const groupedList: { group: number; events: Event[] }[] = [];
+  const groupedList: { group: string; events: Event[] }[] = [];
   const groups = getGroupsByWeek(events);
 
   groups.forEach((group) => {
     const groupEvents = events.filter(
-      (event: Event) => getISOWeek(new Date(event.start.dateTime)) === group
+      (event: Event) =>
+        getWeekLabel(
+          getISOWeek(new Date(event.start.dateTime)),
+          getYear(new Date(event.start.dateTime))
+        ) === group
     );
 
     const newObject = {
