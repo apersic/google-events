@@ -35,8 +35,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint . --config .eslintrc.json --ext .ts",
-    "format": "prettier \"./{src,public}/**/*.{js,jsx,ts,tsx}\" --write"
+    "format": "prettier \"./{src,public}/**/*.{js,jsx,ts,tsx}\" --write",
+    "lint": "eslint . --config .eslintrc.json --ext .ts && yarn run format"
   },
   "eslintConfig": {
     "extends": [
