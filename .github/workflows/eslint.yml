@@ -32,8 +32,10 @@ jobs:
 
       - name: Install ESLint
         run: |
-          npm install eslint@8.10.0
-          npm install prettier
+          yarn add eslint@8.10.0
+          yarn add @typescript-eslint/eslint-plugin
+          yarn add @typescript-eslint/parser
+          yarn add prettier
 
       - name: Run ESLint
         run: npx eslint .
@@ -41,7 +43,7 @@ jobs:
           --ext .ts
 
       - name: Run format
-        run: npx prettier \"./{src,public}/**/*.{js,jsx,ts,tsx}\" --write
+        run: npx prettier "./{src,public}/**/*.{js,jsx,ts,tsx}" --write
 
       - name: Checkout code
         uses: actions/checkout@v3
