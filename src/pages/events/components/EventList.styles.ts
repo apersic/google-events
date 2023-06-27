@@ -22,6 +22,10 @@ export const EventGroup = styled.div`
   justify-content: center;
   gap: 12px;
 
+  &:last-child {
+    margin-bottom: 72px;
+  }
+
   ${responsive.tablet_portrait} {
     width: 100%;
   }

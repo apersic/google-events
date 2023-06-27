@@ -11,12 +11,12 @@ name: ESLint
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ "main" ]
+    branches: ["main"]
   schedule:
-    - cron: '32 23 * * 6'
+    - cron: "32 23 * * 6"
 
 jobs:
   eslint:
@@ -41,6 +41,6 @@ jobs:
           --ext .ts
           --format prettier \"./{src,public}/**/*.{js,jsx,ts,tsx}\" --write
         continue-on-error: true
-      
+
       - name: Checkout code
         uses: actions/checkout@v3
