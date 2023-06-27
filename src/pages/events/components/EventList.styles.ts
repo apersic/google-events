@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { fonts } from "../../../shared/styles/base/fonts";
+import { responsive } from "../../../shared/styles/utils/responsive";
 
 export const EventList = styled.div`
   display: flex;
@@ -7,6 +8,10 @@ export const EventList = styled.div`
   align-items: flex-end;
   justify-content: center;
   gap: 24px;
+
+  ${responsive.tablet_portrait} {
+    width: 100%;
+  }
 `;
 
 export const EventGroup = styled.div`
@@ -15,6 +20,10 @@ export const EventGroup = styled.div`
   align-items: flex-start;
   justify-content: center;
   gap: 12px;
+
+  ${responsive.tablet_portrait} {
+    width: 100%;
+  }
 `;
 
 export const GroupName = styled.span`

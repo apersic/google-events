@@ -17,6 +17,7 @@ export const NavBar = styled.div`
   top: 0;
   right: 0;
   background: ${colors.white};
+  z-index: 2;
 
   ${responsive.tablet_portrait} {
     padding: 0 12px;

@@ -4,6 +4,7 @@ import { showToast } from "../shared/hooks/useToast";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../store/types";
 import { setEvents } from "../store/reducers/eventReducer";
+import { FieldValues } from "react-hook-form";
 
 export const useGoogleCalendarService = () => {
   const accessToken = useSelector((state: StoreState) => state.userReducer.accessToken);
@@ -48,8 +49,30 @@ export const useGoogleCalendarService = () => {
     }
   };
 
+  const addEvent = async (payload: FieldValues) => {
+    try {
+      await axios.post(
+        `${process.env.REACT_APP_CALENDAR_BASE_URL}/calendars/${user?.email}/events/`,
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            Accept: "application/json",
+          },
+        }
+      );
+
+      showToast("Event created.");
+      dispatch(setEvents(null));
+      getCalendarEvents();
+    } catch (error: any) {
+      showToast(error.response.data.error.message);
+    }
+  };
+
   return {
     getCalendarEvents,
     deleteEvent,
+    addEvent,
   };
 };

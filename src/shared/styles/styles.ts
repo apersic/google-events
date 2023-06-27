@@ -29,11 +29,15 @@ export const PageWrapper = styled.div`
 
 export const PageLayout = styled.div`
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
   flex-direction: column;
   gap: 32px;
   margin: 80px 0 72px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0 64px;
 
   ${responsive.tablet_portrait} {
     padding: 0 16px;
@@ -46,4 +50,8 @@ export const PageTitle = styled.h1`
   line-height: ${fonts.title.lineHeight};
   font-weight: ${fonts.fontWeightBold};
   text-align: left;
+
+  ${responsive.phone} {
+    width: 100%;
+  }
 `;
