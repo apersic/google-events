@@ -45,7 +45,7 @@ export async function showToast(message: string, wait?: number | null) {
 
   await new Promise(() =>
     setTimeout(() => {
-      root.unmount();
+      root.render(<></>);
     }, wait || 3000)
   );
 }
