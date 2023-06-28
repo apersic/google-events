@@ -5,7 +5,9 @@ import App from "./App";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { Provider } from "react-redux";
 import store from "./store/store";
+import { initI18n } from "./shared/localisation/i18n-init";
 
+initI18n();
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <GoogleOAuthProvider clientId={process.env.REACT_APP_CLIENT_ID ?? ""}>
