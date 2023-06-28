@@ -66,5 +66,7 @@ export default {
     english: "Engleski",
 
     croatian: "Hrvatski",
+
+    submit: "Potvrdi",
   },
 };

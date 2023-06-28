@@ -29,7 +29,7 @@ export const Title = styled.span`
   width: 100%;
 `;
 
-export const SubmitButton = styled.input`
+export const SubmitButton = styled.button`
   border: ${colors.listItemBorder};
   background: ${colors.primary};
   color: ${colors.white};
