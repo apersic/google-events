@@ -23,9 +23,10 @@ export const EventsPage = () => {
   useEffect(() => {
     if (!user) {
       navigate(LOGIN_PAGE);
-    } else {
-      getCalendarEvents();
+      return;
     }
+
+    getCalendarEvents();
   }, [user]);
 
   const handleOnAddEventClick = () => {
