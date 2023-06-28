@@ -70,7 +70,7 @@ export const AddEventPopup = ({ onCancel, onSave }: AddEventPopupProps) => {
 
         <ButtonGroup>
           <CancelButton onClick={onCancel}>{t("cancel")}</CancelButton>
-          <S.SubmitButton type="submit" />
+          <S.SubmitButton type="submit">{t("submit")}</S.SubmitButton>
         </ButtonGroup>
       </S.AddEventForm>
     </S.AddEventPopup>
