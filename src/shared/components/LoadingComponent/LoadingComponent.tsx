@@ -3,12 +3,13 @@ import * as S from "./LoadingComponent.styles";
 
 export interface LoadingComponentProps {
   text: string;
+  isFixed?: boolean;
 }
 
-const LoadingComponent = ({ text }: LoadingComponentProps) => {
+const LoadingComponent = ({ text, isFixed = false }: LoadingComponentProps) => {
   return (
     <S.LoadingComponent>
-      <LoadingDots />
+      <LoadingDots isFixed={isFixed} />
       <S.LoadingText>{text}</S.LoadingText>
     </S.LoadingComponent>
   );

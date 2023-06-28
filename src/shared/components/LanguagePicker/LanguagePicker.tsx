@@ -4,7 +4,7 @@ import * as S from "./LanguagePicker.styles";
 import { getLanguage } from "../../localisation/i18n-utils";
 import { useTranslation } from "react-i18next";
 
-export const LanguaegPicker = () => {
+export const LanguagePicker = () => {
   const language = getLanguage();
   const { t } = useTranslation();
 

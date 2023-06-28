@@ -3,8 +3,8 @@ import { StoreState } from "../../../store/types";
 import * as S from "./NavBar.styles";
 import { Submenu } from "../Submenu/Submenu";
 import { setIsSubmenuOpened } from "../../../store/reducers/coreReducer";
-import { LanguaegPicker } from "../LanguagePicker/LanguagePicker";
 import { useTranslation } from "react-i18next";
+import { LanguagePicker } from "../LanguagePicker/LanguagePicker";
 
 export const NavBar = () => {
   const user = useSelector((state: StoreState) => state.userReducer.user);
@@ -17,7 +17,7 @@ export const NavBar = () => {
       <S.AppName>{t("appName")}</S.AppName>
 
       <S.Settings>
-        <LanguaegPicker />
+        <LanguagePicker />
 
         {user && (
           <S.UserOptions onClick={() => dispatch(setIsSubmenuOpened(!isSubmenuOpened))}>

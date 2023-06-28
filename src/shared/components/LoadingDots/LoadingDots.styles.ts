@@ -33,6 +33,7 @@ export const Dot = styled.div`
 
 interface OuterDotProps {
   delay?: number;
+  isFixed?: boolean;
 }
 
 export const OuterDot = styled.div<OuterDotProps>`
@@ -45,8 +46,15 @@ export const OuterDot = styled.div<OuterDotProps>`
   position: absolute;
   left: 0;
   top: 0;
-  animation: ${LoadingAnimation} 1.6s linear infinite;
   opacity: 0;
+
+  ${(props) => {
+    if (!props.isFixed) {
+      return css`
+        animation: ${LoadingAnimation} 1.6s linear infinite;
+      `;
+    }
+  }}
 
   ${(props) => {
     if (props.delay) {

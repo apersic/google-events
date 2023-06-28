@@ -5,6 +5,8 @@
   "dependencies": {
     "@react-oauth/google": "^0.11.0",
     "@reduxjs/toolkit": "^1.9.5",
+    "@storybook/addon-actions": "^7.0.24",
+    "@storybook/types": "^7.0.24",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -38,7 +40,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier \"./{src,public}/**/*.{js,jsx,ts,tsx}\" --write",
-    "lint": "eslint . --config .eslintrc.json --ext .ts && yarn run format"
+    "lint": "eslint . --config .eslintrc.json --ext .ts && yarn run format",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "eslintConfig": {
     "extends": [
@@ -59,7 +63,23 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.22.5",
+    "@babel/preset-react": "^7.22.5",
+    "@babel/preset-typescript": "^7.22.5",
+    "@storybook/addon-essentials": "7.0.24",
+    "@storybook/addon-interactions": "7.0.24",
+    "@storybook/addon-links": "7.0.24",
+    "@storybook/blocks": "7.0.24",
+    "@storybook/preset-create-react-app": "7.0.24",
+    "@storybook/react": "7.0.24",
+    "@storybook/react-webpack5": "7.0.24",
+    "@storybook/testing-library": "0.0.14-next.2",
     "@types/styled-components": "^5.1.26",
-    "eslint-config-prettier": "^8.8.0"
+    "babel-plugin-named-exports-order": "0.0.2",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-storybook": "^0.6.12",
+    "prop-types": "15.8.1",
+    "storybook": "7.0.24",
+    "webpack": "5.88.1"
   }
 }
