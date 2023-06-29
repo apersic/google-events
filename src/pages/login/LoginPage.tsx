@@ -8,6 +8,7 @@ import { PageLayout, PageTitle } from "../../shared/styles/styles";
 import { HOME_PAGE } from "../../routers/routeNames";
 import { useTranslation } from "react-i18next";
 
+// This is a Login page
 export const LoginPage = () => {
   const user = useSelector((state: StoreState) => state.userReducer.user);
   const { login } = useGoogleLoginService();
