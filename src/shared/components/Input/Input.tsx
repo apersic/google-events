@@ -1,6 +1,6 @@
 import * as Styled from "./Input.styles";
 
-interface InputPropTypes {
+export interface InputPropTypes {
   children?: JSX.Element[];
   name?: string;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;

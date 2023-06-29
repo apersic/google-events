@@ -8,9 +8,9 @@ export interface LoadingDotsProps {
 const LoadingDots = ({ isFixed = false }: LoadingDotsProps) => {
   return (
     <S.LoadingDots isFixed={isFixed}>
-      <Dot delay={-0.32} />
-      <Dot delay={-0.16} />
-      <Dot />
+      <Dot isFixed={isFixed} delay={-0.32} />
+      <Dot isFixed={isFixed} delay={-0.16} />
+      <Dot isFixed={isFixed} />
     </S.LoadingDots>
   );
 };
