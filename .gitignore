@@ -28,3 +28,6 @@ yarn-error.log*
 
 # Chromatic publish log
 build-storybook.log
+
+# Storybook build folder
+storybook-static
